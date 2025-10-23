@@ -1,0 +1,391 @@
+/* 🌌 Efek Bintang Berjatuhan + Berkelip */
+.stars, .stars2, .stars3 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+  background-size: contain;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.stars {
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation: animStars 100s linear infinite;
+  opacity: 0.8;
+}
+
+.stars2 {
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation: animStars 200s linear infinite;
+  opacity: 0.5;
+}
+
+.stars3 {
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation: animStars 300s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes animStars {
+  from { background-position: 0 0; }
+  to { background-position: 0 10000px; }
+}
+
+/* 🌫 Efek Awan Parallax */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://png.pngtree.com/thumb_back/fw800/background/20231007/pngtree-pastel-sky-with-clouds-wallpaper-background-image_13504031.png') repeat-x;
+  background-size: cover;
+  animation: cloudMove 120s linear infinite;
+  opacity: 0.25;
+  z-index: -1;
+}
+
+@keyframes cloudMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ⚡ Scroll Halus */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 🔮 Hover Glow */
+button:hover, 
+.nametag-img:hover, 
+.profile img:hover, 
+.pkl-img:hover {
+  box-shadow: 0 0 25px rgba(249, 231, 29, 0.7);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+/* ========================= */
+/* ==== TEMA DASAR ==== */
+/* ========================= */
+:root{
+  --accent: #f9d423;
+  --muted-bg: rgba(68,0,89,0.5);
+  --nav-bg: rgba(215,34,232,0.6);
+  --footer-bg: rgba(209,33,203,0.8);
+}
+
+*{box-sizing:border-box}
+body {
+  padding-top: 70px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #e0ddef;
+    background: url('BACGROUND.JPG') no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: brightness(90%);
+}
+
+/* ===== ANIMASI EMOJI TANGAN MELAMBAI ===== */
+.wave {
+  display: inline-block;
+  animation: wave 1.8s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60%, 100% { transform: rotate(0deg); }
+}
+
+
+/* ========================= */
+/* ======= NAVBAR ======= */
+/* ========================= */
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: center; /* menu di tengah */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--nav-bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #afe208;
+    font-weight: 600;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 8px;
+    padding: 6px 12px;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--accent);
+    background: rgba(255,255,255,0.1);
+    border-color: var(--accent);
+    transform: scale(1.05);
+}
+/* ========================= */
+/* ======= SECTION ======= */
+/* ========================= */
+.section {
+    padding: 60px 20px;
+    background-color: var(--muted-bg);
+}
+
+/* ========================= */
+/* ========= HOME ========= */
+/* ========================= */
+.home .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.home .text { max-width: 520px; }
+.home h2 { font-size: 28px; color: var(--accent); margin: 0 0 12px 0; }
+
+/* NAMETAG (Dikasih Delay Animasi) */
+.nametag-img {
+    width: 250px;
+    border-radius: 12px;
+    border: 4px solid var(--accent);
+    box-shadow: 0 0 18px rgba(249, 231, 29, 0.5);
+    opacity: 0;
+    transform: scale(0.6);
+    animation: fadeInNametag 2s ease forwards;
+    animation-delay: 1,2s;
+}
+
+@keyframes fadeInNametag {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.nametag-img:hover { transform: scale(1.05); }
+
+/* ========================= */
+/* ========= ABOUT ========= */
+/* ========================= */
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.profile img {
+    width: 200px;
+    border-radius: 12px;
+    border: 3px solid var(--accent);
+    object-fit: cover;
+}
+
+.info p { font-size: 16px; margin: 6px 0; }
+
+/* EDU & EXPERIENCE */
+.edu-exp { display:flex; flex-wrap:wrap; gap:30px; justify-content:center; margin-top:20px; }
+.education ul { padding-left:18px; }
+.experience .pkl-row { display:flex; gap:12px; align-items:center; max-width:700px; }
+.pkl-img {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,0.12);
+}
+
+/* ========================= */
+/* ======= CONTACT ======== */
+/* ========================= */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.contact-info {
+    min-width: 240px;
+    max-width: 420px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.contact-icon{
+    width: 34px;
+    height: 34px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    padding: 3px;
+}
+
+/* FORM */
+.contact-form {
+    min-width: 260px;
+    max-width: 520px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+.contact-form button {
+    background-color: var(--accent);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform .15s;
+}
+
+.contact-form button:hover { transform: translateY(-3px); }
+
+/* ========================= */
+/* ========= FOOTER ========= */
+/* ========================= */
+footer {
+    text-align: center;
+    background-color: var(--footer-bg);
+    padding: 18px 12px;
+    font-size: 14px;
+    color: #fff;
+}
+
+/* ========================= */
+/* ===== RESPONSIVE ======= */
+/* ========================= */
+@media (max-width:860px){
+  .contact-container { flex-direction: column; gap:18px; }
+  .edu-exp { flex-direction: column; }
+  .home .container { flex-direction: column-reverse; }
+}
+/* ==== NGL LINK DENGAN BINGKAI ==== */
+.ngl-section .ngl-link {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 2px solid #f9f9f6;          /* Warna bingkai kuning keemasan */
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e7f9fc;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(249, 212, 35, 0.4);
+}
+
+.ngl-section .ngl-link:hover {
+  background: rgba(249, 212, 35, 0.2);
+  color: #cff151;
+  box-shadow: 0 0 20px rgba(249, 212, 35, 0.8);
+  transform: scale(1.05);
+}
+
+/* ===== Pesan Otomatis ===== */
+#greeting {
+  font-size: 24px;           /* ukuran teks */
+  font-weight: 600;          /* tebal */
+  color: #f9d423;            /* warna tema */
+  margin-bottom: 12px;
+  white-space: normal;       /* bisa wrap ke baris baru */
+  overflow: visible;         /* jangan sembunyikan teks */
+  border-right: none;        /* hapus kursor */
+  padding-right: 0;
+}
+
+/* Fade-in untuk greeting */
+#greeting {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+  animation-delay: 0s; /* bisa diubah di JS jika mau delay */
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* ✨ Animasi Fade In + Slide Up */
+.fade-in {
+  opacity: 0;                  /* mulai dari transparan */
+  transform: translateY(30px); /* sedikit turun dari posisi awal */
+  animation: fadeUp 1.5s ease forwards; /* jalankan animasi */
+}
+
+.fade-delay {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.5s ease forwards;
+  animation-delay: 0.6s;       /* muncul 0.6 detik setelah judul */
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;                /* menjadi terlihat */
+    transform: translateY(0);  /* kembali ke posisi normal */
+  }
+}
+
+/* ✨ Wave Emoji */
+.wave {
+  display: inline-block;
+  animation: wave 1.8s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60%, 100% { transform: rotate(0deg); }
+}
+
